@@ -1,3 +1,9 @@
+/**
+ * @file flycapture_camera_driver_core.hpp
+ * @brief Master controller for FlyCapture cameras with Session ID generation.
+ * @copyright Copyright (c) 2026
+ */
+
 #ifndef FLYCAPTURE_CAMERA_DRIVER_CORE_HPP_
 #define FLYCAPTURE_CAMERA_DRIVER_CORE_HPP_
 
@@ -16,10 +22,6 @@ namespace flycapture_driver {
 
 namespace fs = std::filesystem;
 
-/**
- * @brief Manages a single physical FlyCapture2 camera.
- * Implements a producer-consumer pattern for non-blocking image saving.
- */
 class CameraHandler {
 public:
   struct ImageData {
@@ -32,7 +34,6 @@ public:
                 int timeout_ms);
   ~CameraHandler();
 
-  // Prevent copying for thread safety and resource management
   CameraHandler(const CameraHandler &) = delete;
   CameraHandler &operator=(const CameraHandler &) = delete;
 
@@ -50,7 +51,6 @@ private:
   unsigned int index_;
   unsigned int serial_number_;
   std::unique_ptr<FlyCapture2::Camera> camera_;
-
   std::string current_dir_;
   bool is_recording_ = false;
   bool stop_worker_ = false;
@@ -61,9 +61,6 @@ private:
   std::thread worker_thread_;
 };
 
-/**
- * @brief Orchestrates multiple CameraHandler instances.
- */
 class DriverCore {
 public:
   DriverCore();
@@ -74,20 +71,21 @@ public:
                           int timeout, const std::string &base_dir);
 
   std::vector<cv::Mat> get_all_frames(bool rotate_180);
-  std::string start_all_recording();
+  
+  // Revised: Accepts an externally generated session ID
+  void start_all_recording(const std::string& session_id);
   void stop_all_recording();
-  std::string switch_all_directories();
+  
+  // Helper for Master Node to generate the common ID
+  std::string generate_session_name();
   bool is_any_recording() const;
 
 private:
-  std::string generate_timestamp_dir();
-
   FlyCapture2::BusManager bus_mgr_;
   std::vector<std::shared_ptr<CameraHandler>> handlers_;
   std::shared_ptr<CameraHandler> left_camera_ = nullptr;
   std::shared_ptr<CameraHandler> right_camera_ = nullptr;
   std::vector<std::shared_ptr<CameraHandler>> random_cameras_;
-
   std::string base_save_dir_;
 };
 

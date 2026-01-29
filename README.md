@@ -4,10 +4,15 @@
 ```bash
 mkdir -p ~/ros2_ws/src
 cd ~/ros2_ws/src
-git clone 
+git clone https://github.com/Arata-Stu/event_rgb_data_recording.git
 
 cd ~/ros2_ws
 colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
+```
+
+## run recorder
+```bash
+ros2 launch recording_launch record.launch.xml
 ```
 
 ## recording trigger using ros2 service
