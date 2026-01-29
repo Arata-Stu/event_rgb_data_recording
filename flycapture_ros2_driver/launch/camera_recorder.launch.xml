@@ -1,0 +1,11 @@
+<launch>
+  <arg name="camera_param" default="$(find-pkg-share flycapture_ros2_driver)/config/flycapture_camera_driver_node.params.yaml"/>
+
+  <!-- grasshopper3の起動 -->
+  <node pkg="flycapture_ros2_driver" exec="flycapture_camera_driver_node" name="flycapture_camera_driver_node" output="screen">
+    <param from="$(var camera_param)"/>
+    <remap from="/set_recording" to="/set_recording"/>
+    <remap from="/recording_status" to="/recording_status"/>
+  </node>
+
+</launch>

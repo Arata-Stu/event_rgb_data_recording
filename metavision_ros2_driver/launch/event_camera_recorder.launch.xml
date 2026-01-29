@@ -1,0 +1,10 @@
+<launch>
+  <arg name="event_camera_param" default="$(find-pkg-share metavision_ros2_driver)/config/event_camera_driver_node.params.yaml"/>
+
+  <!-- grasshopper3の起動 -->
+  <node pkg="metavision_ros2_driver" exec="event_camera_driver_node" name="event_camera_driver_node" output="screen">
+    <param from="$(var event_camera_param)"/>
+    <remap from="/recording_status" to="/recording_status"/>
+  </node>
+
+</launch>

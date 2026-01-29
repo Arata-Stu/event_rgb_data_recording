@@ -1,0 +1,9 @@
+<launch>
+  
+  <!-- RGB Camera Recorder -->
+  <include file="$(find-pkg-share flycapture_ros2_driver)/launch/camera_recorder.launch.xml" />
+
+  <!-- Event Camera Recorder -->
+  <include file="$(find-pkg-share metavision_ros2_driver)/launch/event_camera_driver.launch.xml" />
+  
+</launch>

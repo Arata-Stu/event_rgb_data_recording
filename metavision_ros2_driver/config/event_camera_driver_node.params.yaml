@@ -1,0 +1,29 @@
+/**:
+  ros__parameters:
+    # --- Stereo Camera Identification ---
+    # Hardware serial numbers used to assign logical "Left" and "Right" roles.
+    # Leave empty if you want the driver to pick the first available device.
+    left_event_serial: ""   # 左側のイベントカメラのシリアルを入力
+    right_event_serial: ""  # 右側のイベントカメラのシリアルを入力
+
+    # --- Hardware Configuration ---
+    # Path to the bias file (.bias) for sensor sensitivity tuning.
+    bias_file: '/home/arata22/Documents/metavision/biases/biases.bias'
+    
+    # Event accumulation time in microseconds for frame generation.
+    # Lower values result in sharper motion but sparser images.
+    accumulation_time_us: 10000
+
+    # --- Storage & Session Management ---
+    # Root directory for session folders. This should match the RGB driver's save_directory.
+    save_directory: '/home/arata22/recording/images'
+
+    # --- Visualization & Node Timing ---
+    # The period (ms) at which the ROS node refreshes the visualization window.
+    timer_period_ms: 33
+
+    # Flip the image 180 degrees if the camera is mounted upside down.
+    rotate_180: false
+
+    # Enable or disable the OpenCV preview window.
+    show_window: true

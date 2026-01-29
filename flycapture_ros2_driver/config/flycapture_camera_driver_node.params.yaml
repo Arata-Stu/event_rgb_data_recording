@@ -1,0 +1,76 @@
+/**:
+  ros__parameters:
+    # --- Hardware Connection Settings ---
+    # Timeout for retrieving a buffer from the camera in milliseconds.
+    timeout: 1000
+
+    # --- Node Execution Settings ---
+    # Frequency of the internal timer for grabbing frames (ms).
+    # Setting this lower than the hardware frame rate ensures minimal latency.
+    timer_period_ms: 10
+
+    # --- Storage Management ---
+    # Root directory where captured images and sub-folders will be stored.
+    save_directory: '/home/arata22/recording/images'
+
+    # Interval in seconds to create a new timestamped subdirectory during recording.
+    # Prevents filesystem slowdown caused by excessive files in a single folder.
+    directory_switch_interval: 60
+
+    # --- Camera Sensor Configurations ---
+    # Resolution and pixel format. See supported list below.
+    video_mode: 'VIDEOMODE_800x600YUV422'
+
+    # Hardware-level frame rate of the camera sensor.
+    hardware_frame_rate: 'FRAMERATE_30'
+
+    # --- Image Post-Processing ---
+    # Set to true if the camera is mounted upside down.
+    rotate_180: true
+
+    # --- Visualization ---
+    # Enable/disable OpenCV preview window. Set to false for headless environments.
+    show_window: true
+
+    # --- Multi-Camera Identification ---
+    # Unique hardware serial numbers to map physical cameras to logical roles.
+    right_camera_serial: "16400750"
+    left_camera_serial: "16400757"
+
+## VIDEO_MODEのリストをすべて列挙する
+# VIDEOMODE_160x120YUV444
+# VIDEOMODE_320x240YUV422
+# VIDEOMODE_640x480YUV411
+# VIDEOMODE_640x480YUV422
+# VIDEOMODE_640x480RGB
+# VIDEOMODE_640x480Y8
+# VIDEOMODE_640x480Y16
+# VIDEOMODE_800x600YUV422
+# VIDEOMODE_800x600RGB
+# VIDEOMODE_800x600Y8
+# VIDEOMODE_800x600Y16
+# VIDEOMODE_1024x768YUV422
+# VIDEOMODE_1024x768RGB
+# VIDEOMODE_1024x768Y8
+# VIDEOMODE_1024x768Y16
+# VIDEOMODE_1280x960YUV422
+# VIDEOMODE_1280x960RGB
+# VIDEOMODE_1280x960Y8
+# VIDEOMODE_1280x960Y16
+# VIDEOMODE_1600x1200YUV422
+# VIDEOMODE_1600x1200RGB
+# VIDEOMODE_1600x1200Y8
+# VIDEOMODE_1600x1200Y16
+# VIDEOMODE_FORMAT7
+
+## FRAME_RATEのリストをすべて列挙する
+# FRAMERATE_1_875
+# FRAMERATE_3_75
+# FRAMERATE_7_5
+# FRAMERATE_15
+# FRAMERATE_30
+# FRAMERATE_60
+# FRAMERATE_120
+# FRAMERATE_240
+
+
